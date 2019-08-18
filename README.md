@@ -4,7 +4,7 @@
 |email|string|null: false|
 |password|string|null: false|
 |name|string|null: false|
-###Association
+##Association
 - has_many :messages
 - has_many :groups_users
 - has_many :groups, through: :groups_users
@@ -13,7 +13,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-###Association
+##Association
 - has_many :messages
 - has_many :groups_users
 - has_many :users,  through: :groups_users
@@ -23,7 +23,7 @@
 |------|----|-------|
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
-###Association
+##Association
 - belongs_to :group
 - belongs_to :user
 
@@ -34,6 +34,6 @@
 |image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
-###Association
+##Association
 - belongs_to :group
 - belongs_to :user
