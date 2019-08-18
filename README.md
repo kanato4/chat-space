@@ -3,7 +3,7 @@
 |------|----|-------|
 |email|string|null: false|
 |password|string|null: false|
-|user_name|string|null: false, index: true|
+|name|string|null: false, index: true|
 
 ### Association
 - has_many :messages
@@ -13,7 +13,7 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :messages
