@@ -1,0 +1,33 @@
+.flash-box
+  .flash-box__notice
+    グループを作成しました
+.wrapper
+  = render partial: "chat-side"
+  .chat-main
+    .main-header
+      .left-box
+        .left-box__current-group
+          グループ名
+        %ul.left-box__member-list
+          Member：
+          %li.member
+            test_user
+          %li.member
+            aaaaaa
+      .main-header__edit-btn
+        Edit
+    .messages
+      .message
+        .message__upper-info
+          .message__upper-info__talker
+            test_user
+          .message__upper-info__date
+            2019/08/26(Mon) 00:00:00
+        .message__text
+          こんにちは
+    .form
+      %input.form__input-box{type: "text", value: "type a message"}
+      %label.form__image
+        = fa_icon "picture-o", class: "icon"
+        %input.hidden{type: "file"}
+      %input.form__submit{type: "submit", value: "Send"}
