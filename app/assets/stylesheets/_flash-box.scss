@@ -1,0 +1,12 @@
+.flash-box{
+  height: 24px;
+  width: 100%;
+  text-align: center;
+  color: $white;
+  .notice{
+    background-color: $blue;
+  }
+  .alert{
+    background-color: $alert_orange;
+  }
+}
