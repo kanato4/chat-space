@@ -1,4 +1,4 @@
 .flash-box
   .flash-box__notice
-    - flash.each do |key, value|
+    - flash.keep.each do |key, value|
       = content_tag :div, value, class: key
