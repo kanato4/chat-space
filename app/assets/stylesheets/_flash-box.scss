@@ -1,12 +1,14 @@
 .flash-box{
-  height: 24px;
-  width: 100%;
-  text-align: center;
-  color: $white;
   .notice{
+    height: 24px;
     background-color: $blue;
+    text-align: center;
+    color: $white;
   }
   .alert{
+    height: 24px;
     background-color: $alert_orange;
+    text-align: center;
+    color: $white;
   }
 }

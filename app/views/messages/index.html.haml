@@ -1,4 +1,4 @@
-= render partial: "flash-box" 
+= render partial: "layouts/flash-box" 
 .wrapper
   = render partial: "chat-side"
   .chat-main
@@ -13,7 +13,8 @@
           %li.member
             aaaaaa
       .main-header__edit-btn
-        Edit
+        = link_to edit_group_path(current_user) do
+          Edit
     .messages
       .message
         .message__upper-info
