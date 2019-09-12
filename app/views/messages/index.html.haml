@@ -16,14 +16,7 @@
         = link_to edit_group_path(current_user) do
           Edit
     .messages
-      .message
-        .message__upper-info
-          .message__upper-info__talker
-            test_user
-          .message__upper-info__date
-            2019/08/26(Mon) 00:00:00
-        .message__text
-          こんにちは
+      = render partial: "message", collection: @messages
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__input-box', placeholder: 'type a message'
