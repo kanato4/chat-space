@@ -20,7 +20,11 @@ $(function(){
                </div>`
     return html;
   }
-
+  function scroll(){
+    $('.messages').animate({
+      scrollTop: $('.messages')[0].scrollHeight
+    });
+  }
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -37,6 +41,7 @@ $(function(){
       var html = buildMessage(message)
       $('.messages').append(html);
       $('.form__input-box').val('');
+      scroll();
     })
     .fail(function(){
       alert("エラー");
