@@ -41,5 +41,8 @@ $(function(){
     .fail(function(){
       alert("エラー");
     })
+    .always(function(){
+      $('.form__submit').prop('disabled', false);
+    })
   })
 });
