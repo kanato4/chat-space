@@ -11,13 +11,11 @@
     .chat-group-form__field--right
       = f.text_field :name, class: 'chat_group_name chat-group-form__input', placeholder: "グループ名を入力してください"
   .chat-group-form__field
-    / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときに使用します
-  .chat-group-form__field
     .chat-group-form__field--left
-      = f.label "チャットメンバー", class: "chat-group-form__label"
+      = f.label "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
-      = f.collection_check_boxes :user_ids, User.all, :id, :name
-      / この部分はインクリメンタルサーチ(ユーザー追加の非同期化)のときにも使用します
+      .chat-group-form__search
+      %input.chat-group-form__input{id: 'user-search-field', placeholder: "追加したいユーザー名を入力してください", type: 'text'}
   .chat-group-form__field
     .chat-group-form__field--left
     .chat-group-form__field--right
