@@ -4,15 +4,14 @@
     .main-header
       .left-box
         .left-box__current-group
-          グループ名
+          = @group.name
         %ul.left-box__member-list
           Member：
-          %li.member
-            test_user
-          %li.member
-            aaaaaa
+          - @group.group_users.each do |group|
+            %li.member
+              = group.user.name
       .main-header__edit-btn
-        = link_to edit_group_path(current_user) do
+        = link_to edit_group_path(@group) do
           Edit
     .messages
       = render partial: "message", collection: @messages
