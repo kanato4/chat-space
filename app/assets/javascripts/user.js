@@ -45,16 +45,6 @@ $(document).on('turbolinks:load',function(){
             users.forEach(function(user){
               appendUser(user);
             });
-            $(document).on('click', ".chat-group-user__btn--add", function(e){
-              var user = e.target
-              appendList(user);
-              $(this).unwrap();
-              $(this).prev().remove();
-              $(this).remove();
-            });
-            $(document).on('click', ".chat-group-user__btn--remove.js-remove-btn", function(e){
-              $(this).parent().remove();
-            });
           }
           else{
             $('#user-search-result').empty();
@@ -66,5 +56,18 @@ $(document).on('turbolinks:load',function(){
           alert("ユーザー検索に失敗しました");
         })
       });
+
+      $(document).on('click', ".chat-group-user__btn--add", function(e){
+        var user = e.target
+        appendList(user);
+        $(this).unwrap();
+        $(this).prev().remove();
+        $(this).remove();
+      });
+
+      $(document).on('click', ".chat-group-user__btn--remove.js-remove-btn", function(e){
+        $(this).parent().remove();
+      });
+
     });
 });
