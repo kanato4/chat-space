@@ -52,4 +52,28 @@ $(document).on('turbolinks:load', function(){
       $('.form__submit').prop('disabled', false);
     })
   })
+
+  var reloadMessages = function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var href = 'api/messages#index {format: "json"}'
+      var last_message_id = $('.message:last').data('message-id'); 
+      $.ajax({
+        url: href,
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        var insertHTML = "";
+        messages.forEach(function(message){
+          insertHTML = buildMessage(message);
+          $('.messages').append(insertHTML);
+        })
+      })
+      .fail(function() {
+        alert("自動更新に失敗しました");
+      });
+    }
+  };
+  setInterval(reloadMessages, 5000);
 });
