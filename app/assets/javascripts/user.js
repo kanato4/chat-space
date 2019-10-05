@@ -50,6 +50,9 @@ $(function(){
           $(this).prev().remove();
           $(this).remove();
         });
+        $(document).on('click', ".chat-group-user__btn--remove.js-remove-btn", function(e){
+          $(this).parent().remove();
+        });
       }
       else{
         $('#user-search-result').empty();
