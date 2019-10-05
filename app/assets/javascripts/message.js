@@ -1,8 +1,8 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
 
   function buildMessage(message){
     var img = message.image ? `<img src= ${message.image}` : "";
-    var html =`<div class="message">
+    var html =`<div class="message" data-message-id="${message.id}">
                 <div class="message__upper-info">
                   <div class="message__upper-info__talker">
                     ${message.user_name}
@@ -20,11 +20,13 @@ $(function(){
                </div>`
     return html;
   }
+
   function scroll(){
     $('.messages').animate({
       scrollTop: $('.messages')[0].scrollHeight
     });
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
