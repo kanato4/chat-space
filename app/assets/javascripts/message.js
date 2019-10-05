@@ -1,8 +1,8 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
 
   function buildMessage(message){
     var img = message.image ? `<img src= ${message.image}` : "";
-    var html =`<div class="message">
+    var html =`<div class="message" data-message-id="${message.id}">
                 <div class="message__upper-info">
                   <div class="message__upper-info__talker">
                     ${message.user_name}
@@ -20,11 +20,13 @@ $(function(){
                </div>`
     return html;
   }
+
   function scroll(){
     $('.messages').animate({
       scrollTop: $('.messages')[0].scrollHeight
     });
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -50,4 +52,28 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     })
   })
+
+  var reloadMessages = function(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var href = 'api/messages#index {format: "json"}'
+      var last_message_id = $('.message:last').data('message-id'); 
+      $.ajax({
+        url: href,
+        type: 'GET',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        var insertHTML = "";
+        messages.forEach(function(message){
+          insertHTML = buildMessage(message);
+          $('.messages').append(insertHTML);
+        })
+      })
+      .fail(function() {
+        alert("自動更新に失敗しました");
+      });
+    }
+  };
+  setInterval(reloadMessages, 5000);
 });
